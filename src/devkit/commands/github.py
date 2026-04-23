@@ -6,6 +6,7 @@ from devkit.utils.gh import gh, gh_json
 app = typer.Typer()
 console = Console()
 
+
 @app.command()
 def issues(
     repo: str = typer.Option('', help='owner/repo (default: current repo)'),
@@ -89,4 +90,16 @@ def run_status(
     table.add_column('Branch', min_width=25)
     table.add_column('Name', min_width=20)
     table.add_column('Status', width=12)
-    table.add_column('Result', width=12
+    table.add_column('Result', width=12)
+
+    for run in data:
+        conclusion = run.get('conclusion') or '...'
+        color = 'green' if conclusion == 'success' else 'red' if conclusion == 'failure' else 'yellow'
+        table.add_row(
+            run['headBranch'],
+            run['name'],
+            run['status'],
+            f'[{color}]{conclusion}[/{color}]'
+        )
+
+    console.print(table)
