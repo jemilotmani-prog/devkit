@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "devkit"
+version = "0.1.0"
+description = "AI-powered developer toolkit"
+requires-python = ">=3.10"
+dependencies = [
+    "typer[all]>=0.9.0",
+    "rich>=13.0.0",
+]
+
+[project.scripts]
+devkit = "devkit.main:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
