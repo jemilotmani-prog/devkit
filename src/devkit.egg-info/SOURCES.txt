@@ -13,4 +13,5 @@ src/devkit/commands/ai.py
 src/devkit/commands/github.py
 src/devkit/commands/workflow.py
 src/devkit/utils/__init__.py
+src/devkit/utils/check.py
 src/devkit/utils/gh.py
